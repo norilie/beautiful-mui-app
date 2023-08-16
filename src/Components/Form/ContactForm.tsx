@@ -4,12 +4,8 @@ import {
   Button,
   Dialog,
   FormControl,
-  FormControlLabel,
   FormGroup,
-  FormLabel,
   Paper,
-  Radio,
-  RadioGroup,
   SelectChangeEvent,
   Stack,
 } from '@mui/material'
@@ -30,6 +26,7 @@ const ContactForm = () => {
     return {
       id: contactData.length + 1,
       name: '',
+      role: '',
       skills: ['React'],
       startDate: `${today.getMonth()}/${today.getDate()}/${today.getFullYear}`,
       preference: defaultPreference,
@@ -69,7 +66,7 @@ const ContactForm = () => {
     const startDate = value as unknown as { month: () => string; date: () => string; year: () => string }
     setFormValues({
       ...formValues,
-      startDate: `${startDate.month() + 1}/${startDate.date()}/${startDate.year()}}`,
+      startDate: `${startDate.month() + 1}/${startDate.date()}/${startDate.year()}`,
     })
   }
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>, value: string) => {

@@ -20,6 +20,7 @@ export const BeautifulAutocomplete = (props: {
         return <li {...props}>{`${option}`}</li>
       }}
       isOptionEqualToValue={(option, value) => option === value || value === ''}
+      freeSolo
     />
   )
 }
