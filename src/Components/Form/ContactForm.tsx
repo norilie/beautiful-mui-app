@@ -21,6 +21,18 @@ export const minWidth = 300
 export const defaultPreference = 'Work From Home'
 const today = new Date()
 
+const paperInputStyle = {
+  '& .MuiOutlinedInput-root': {
+    '& > fieldset': { border: '1px solid', borderColor: 'primary.main' },
+    '&:hover': {
+      '& > fieldset': { borderColor: 'primary.light' },
+    },
+  },
+  '& .MuiFormLabel-root': {
+    color: 'primary.dark',
+  },
+}
+
 const ContactForm = () => {
   const getDefaultFormValues = () => {
     return {
@@ -98,7 +110,7 @@ const ContactForm = () => {
 
   return (
     <>
-      <Paper>
+      <Paper sx={paperInputStyle}>
         <form>
           <FormControl>
             <FormGroup row sx={{ padding: 2, justifyContent: 'space-between' }}>

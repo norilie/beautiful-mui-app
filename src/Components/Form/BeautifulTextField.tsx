@@ -9,7 +9,19 @@ export const BeautifulTextField = (props: TextFieldProps) => {
       name='name'
       label='Name'
       variant='outlined'
-      sx={{ minWidth: minWidth, marginRight: 2 }}
+      sx={{
+        minWidth: minWidth,
+        marginRight: 2,
+        '& .MuiInputBase-root': { height: 80 },
+        '& .MuiOutlinedInput-root.Mui-focused': {
+          borderColor: 'primary.dark',
+        },
+        '& .MuiOutlinedInput-root: hover': {
+          '& > fieldset.MuiOutlinedInput-notchedOutline': {
+            borderColor: 'orange',
+          },
+        },
+      }}
     />
   )
 }
