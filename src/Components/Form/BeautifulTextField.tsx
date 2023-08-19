@@ -12,11 +12,12 @@ export const BeautifulTextField = (props: TextFieldProps) => {
       sx={{
         minWidth: minWidth,
         marginRight: 2,
-        '& .MuiInputBase-root': { height: 80 },
+        zIndex: 'drawer',
+        // '& .MuiInputBase-root': { height: 80 },
         '& .MuiOutlinedInput-root.Mui-focused': {
           borderColor: 'primary.dark',
         },
-        '& .MuiOutlinedInput-root: hover': {
+        '& .MuiOutlinedInput-root:hover': {
           '& > fieldset.MuiOutlinedInput-notchedOutline': {
             borderColor: 'orange',
           },

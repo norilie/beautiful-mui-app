@@ -2,9 +2,12 @@ import {
   Alert,
   AlertTitle,
   Button,
+  Checkbox,
   Dialog,
   FormControl,
   FormGroup,
+  ListItemText,
+  MenuItem,
   Paper,
   SelectChangeEvent,
   Stack,
@@ -19,6 +22,8 @@ import BeautifulRadios from './BeautifulRadios'
 
 export const minWidth = 300
 export const defaultPreference = 'Work From Home'
+const skills = ['React', 'Angular', 'Python', 'NodeJS', 'Machine Learning']
+
 const today = new Date()
 
 const paperInputStyle = {
@@ -120,7 +125,16 @@ const ContactForm = () => {
           </FormControl>
           <FormControl>
             <FormGroup row sx={{ padding: 2, justifyContent: 'space-between' }}>
-              <BeautifulSelect value={formValues.skills || ''} onChange={handleSelectChange} />
+              <BeautifulSelect value={formValues.skills || ''} onChange={handleSelectChange}>
+                {skills.map(skillName => {
+                  return (
+                    <MenuItem value={skillName} key={skillName}>
+                      <Checkbox checked={formValues.skills?.includes(skillName)} />
+                      <ListItemText primary={skillName} />
+                    </MenuItem>
+                  )
+                })}
+              </BeautifulSelect>
               <BeautifulDesktopDatePicker value={formValues.startDate} onChange={handleDatePickerChange} />
             </FormGroup>
           </FormControl>
