@@ -1,4 +1,4 @@
-import { InputLabel, Select, SelectChangeEvent } from '@mui/material'
+import { Select, SelectChangeEvent } from '@mui/material'
 
 import { minWidth } from './ContactForm'
 import { ReactNode, useEffect, useRef, useState } from 'react'

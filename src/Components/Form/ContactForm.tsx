@@ -11,6 +11,7 @@ import {
   Paper,
   SelectChangeEvent,
   Stack,
+  useTheme,
 } from '@mui/material'
 import { useState } from 'react'
 import { FormValues, contactData } from '../Data/ContactData'
@@ -19,12 +20,13 @@ import BeautifulAutocomplete from './BeautifulAutocomplete'
 import BeautifulSelect from './BeautifulSelect'
 import BeautifulDesktopDatePicker from './BeautifulDesktopDatePicker'
 import BeautifulRadios from './BeautifulRadios'
+import dayjs, { Dayjs } from 'dayjs'
 
 export const minWidth = 300
 export const defaultPreference = 'Work From Home'
 const skills = ['React', 'Angular', 'Python', 'NodeJS', 'Machine Learning']
 
-const today = new Date()
+// const today = new Date()
 
 const paperInputStyle = {
   '& .MuiOutlinedInput-root': {
@@ -37,15 +39,18 @@ const paperInputStyle = {
     color: 'primary.dark',
   },
 }
+const now: Dayjs = dayjs()
+const today: string = `${now.month() + 1}/${now.date()}/${now.year()}`
 
 const ContactForm = () => {
+  const theme = useTheme()
   const getDefaultFormValues = () => {
     return {
       id: contactData.length + 1,
       name: '',
       role: '',
       skills: ['React'],
-      startDate: `${today.getMonth()}/${today.getDate()}/${today.getFullYear}`,
+      startDate: today,
       preference: defaultPreference,
     }
   }
@@ -78,12 +83,12 @@ const ContactForm = () => {
     })
   }
 
-  const handleDatePickerChange = (value: string | null | undefined) => {
-    console.log(value)
-    const startDate = value as unknown as { month: () => string; date: () => string; year: () => string }
+  const handleDatePickerChange = (value: Dayjs | undefined) => {
+    // console.log(value.toDate())
+    // const startDate = value as unknown as { month: () => string; date: () => string; year: () => string }
     setFormValues({
       ...formValues,
-      startDate: `${startDate.month() + 1}/${startDate.date()}/${startDate.year()}`,
+      startDate: `${value.month() + 1}/${value.date()}/${value.year()}`,
     })
   }
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>, value: string) => {
@@ -115,7 +120,16 @@ const ContactForm = () => {
 
   return (
     <>
-      <Paper sx={paperInputStyle}>
+      <Paper sx={paperInputStyle}></Paper>
+      <Paper
+        sx={{
+          ...paperInputStyle,
+          margin: { xs: 1, sm: 2 },
+          zIndex: theme.zIndex.appBar + 1,
+          '&:hover': { backgroundColor: 'rgba(0.0.0.0.1)' },
+          // '& button.MuiButton-text': { backgroundColor: 'primary.light' },
+        }}
+      >
         <form>
           <FormControl>
             <FormGroup row sx={{ padding: 2, justifyContent: 'space-between' }}>
@@ -135,7 +149,7 @@ const ContactForm = () => {
                   )
                 })}
               </BeautifulSelect>
-              <BeautifulDesktopDatePicker value={formValues.startDate} onChange={handleDatePickerChange} />
+              <BeautifulDesktopDatePicker value={dayjs(formValues.startDate)} onChange={handleDatePickerChange} />
             </FormGroup>
           </FormControl>
           <FormControl>

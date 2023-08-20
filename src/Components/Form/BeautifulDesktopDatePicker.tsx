@@ -4,6 +4,7 @@ import { minWidth } from './ContactForm'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 // import dayjs from 'dayjs'
 import 'dayjs/locale/ja'
+import { Dayjs } from 'dayjs'
 
 const popperSX = {
   // color: 'yellow'
@@ -17,10 +18,7 @@ const popperSX = {
     },
   },
 }
-const BeautifulDesktopDatePicker = (props: {
-  value: string | undefined
-  onChange: (value: string | null | undefined) => void
-}) => {
+const BeautifulDesktopDatePicker = (props: { value: Dayjs | null; onChange: (value: Dayjs | undefined) => void }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='ja'>
       <DesktopDatePicker

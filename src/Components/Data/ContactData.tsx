@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 export type FormValues = {
   id: number
   name?: string
@@ -7,7 +9,8 @@ export type FormValues = {
   preference?: string
 }
 
-const today = new Date()
+const now = dayjs()
+const today = `${now.month() + 1}/${now.date()}/${now.year()}`
 
 export const contactData: Array<FormValues> = [
   {
@@ -15,7 +18,7 @@ export const contactData: Array<FormValues> = [
     name: 'Shawn Spencer',
     role: 'Dev',
     skills: ['React', 'Angular'],
-    startDate: `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`,
+    startDate: today,
     preference: 'Work From Home',
   },
   {
@@ -23,7 +26,7 @@ export const contactData: Array<FormValues> = [
     name: 'Burton Guster',
     role: 'Dev',
     skills: ['React'],
-    startDate: `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`,
+    startDate: today,
     preference: 'Work From Home',
   },
   {
@@ -31,7 +34,7 @@ export const contactData: Array<FormValues> = [
     name: "Juliet O'Hara",
     role: 'Dev',
     skills: ['React', 'Angular'],
-    startDate: `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`,
+    startDate: today,
     preference: 'Work From Home',
   },
   {
@@ -39,7 +42,7 @@ export const contactData: Array<FormValues> = [
     name: 'Lassy',
     role: 'Dev',
     skills: ['React'],
-    startDate: `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`,
+    startDate: today,
     preference: 'Work From Home',
   },
 ]
