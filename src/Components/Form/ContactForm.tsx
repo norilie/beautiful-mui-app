@@ -21,6 +21,7 @@ import BeautifulSelect from './BeautifulSelect'
 import BeautifulDesktopDatePicker from './BeautifulDesktopDatePicker'
 import BeautifulRadios from './BeautifulRadios'
 import dayjs, { Dayjs } from 'dayjs'
+import { StyledFormGroup } from './StyledFormGroup'
 
 export const minWidth = 300
 export const defaultPreference = 'Work From Home'
@@ -132,13 +133,13 @@ const ContactForm = () => {
       >
         <form>
           <FormControl>
-            <FormGroup row sx={{ padding: 2, justifyContent: 'space-between' }}>
+            <StyledFormGroup row sx={{ backgroundColor: 'black' }} paddingtop={10}>
               <BeautifulTextField value={formValues.name} onChange={handleTextFieldChange} />
               <BeautifulAutocomplete value={formValues.role || ''} onInputChange={handleAutoCompleteChange} />
-            </FormGroup>
+            </StyledFormGroup>
           </FormControl>
           <FormControl>
-            <FormGroup row sx={{ padding: 2, justifyContent: 'space-between' }}>
+            <StyledFormGroup row>
               <BeautifulSelect value={formValues.skills || ''} onChange={handleSelectChange}>
                 {skills.map(skillName => {
                   return (
@@ -150,16 +151,16 @@ const ContactForm = () => {
                 })}
               </BeautifulSelect>
               <BeautifulDesktopDatePicker value={dayjs(formValues.startDate)} onChange={handleDatePickerChange} />
-            </FormGroup>
+            </StyledFormGroup>
           </FormControl>
           <FormControl>
-            <FormGroup row sx={{ padding: 2, justifyContent: 'space-between' }}>
+            <StyledFormGroup row>
               <BeautifulRadios preference={formValues.preference} handleRadioChange={handleRadioChange} />
               <Stack>
                 <Button onClick={handleSubmit}>Submit</Button>
                 <Button onClick={handleClearClick}>Clear</Button>
               </Stack>
-            </FormGroup>
+            </StyledFormGroup>
           </FormControl>
         </form>
       </Paper>
