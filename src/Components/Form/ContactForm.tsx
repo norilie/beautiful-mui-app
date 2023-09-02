@@ -121,47 +121,46 @@ const ContactForm = () => {
 
   return (
     <>
-      <Paper sx={paperInputStyle}></Paper>
+      {/* <Paper sx={paperInputStyle}></Paper> */}
       <Paper
         sx={{
           ...paperInputStyle,
           margin: { xs: 1, sm: 2 },
           zIndex: theme.zIndex.appBar + 1,
-          '&:hover': { backgroundColor: 'rgba(0.0.0.0.1)' },
+          '&:hover': { backgroundColor: 'rgba(0,0,0,0.1)' },
+          backgroundColor: 'grid.dark',
           // '& button.MuiButton-text': { backgroundColor: 'primary.light' },
         }}
       >
         <form>
-          <FormControl>
-            <StyledFormGroup row sx={{ backgroundColor: 'black' }} paddingtop={10}>
-              <BeautifulTextField value={formValues.name} onChange={handleTextFieldChange} />
-              <BeautifulAutocomplete value={formValues.role || ''} onInputChange={handleAutoCompleteChange} />
-            </StyledFormGroup>
-          </FormControl>
-          <FormControl>
-            <StyledFormGroup row>
-              <BeautifulSelect value={formValues.skills || ''} onChange={handleSelectChange}>
-                {skills.map(skillName => {
-                  return (
-                    <MenuItem value={skillName} key={skillName}>
-                      <Checkbox checked={formValues.skills?.includes(skillName)} />
-                      <ListItemText primary={skillName} />
-                    </MenuItem>
-                  )
-                })}
-              </BeautifulSelect>
-              <BeautifulDesktopDatePicker value={dayjs(formValues.startDate)} onChange={handleDatePickerChange} />
-            </StyledFormGroup>
-          </FormControl>
-          <FormControl>
-            <StyledFormGroup row>
-              <BeautifulRadios preference={formValues.preference} handleRadioChange={handleRadioChange} />
-              <Stack>
-                <Button onClick={handleSubmit}>Submit</Button>
-                <Button onClick={handleClearClick}>Clear</Button>
-              </Stack>
-            </StyledFormGroup>
-          </FormControl>
+          <StyledFormGroup row sx={{ backgroundColor: 'black' }} paddingtop={10}>
+            <BeautifulTextField value={formValues.name} onChange={handleTextFieldChange} />
+            <BeautifulAutocomplete value={formValues.role || ''} onInputChange={handleAutoCompleteChange} />
+          </StyledFormGroup>
+          <StyledFormGroup row>
+            <BeautifulSelect value={formValues.skills || ''} onChange={handleSelectChange}>
+              {skills.map(skillName => {
+                return (
+                  <MenuItem value={skillName} key={skillName}>
+                    <Checkbox checked={formValues.skills?.includes(skillName)} />
+                    <ListItemText primary={skillName} />
+                  </MenuItem>
+                )
+              })}
+            </BeautifulSelect>
+            <BeautifulDesktopDatePicker value={dayjs(formValues.startDate)} onChange={handleDatePickerChange} />
+          </StyledFormGroup>
+          <StyledFormGroup row>
+            <BeautifulRadios preference={formValues.preference} handleRadioChange={handleRadioChange} />
+            <Stack justifyContent='space-around' alignItems='center' sx={{ minWidth: minWidth }}>
+              <Button variant='contained' sx={{ height: 56, width: 100 }} onClick={handleSubmit}>
+                Submit
+              </Button>
+              <Button variant='beautiful' sx={{ height: 56, width: 100 }} onClick={handleClearClick}>
+                Clear
+              </Button>
+            </Stack>
+          </StyledFormGroup>
         </form>
       </Paper>
       <Dialog open={alertOpen} onClose={handleAlertClick}>

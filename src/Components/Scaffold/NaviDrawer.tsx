@@ -5,7 +5,8 @@ import ContactCardGrid from '../Grid/ContactCardGrid'
 import ContactTable from '../Table/ContactTable'
 import ContactDataGrid from '../DataGrid/ContactDataGrid'
 
-import { useTheme, Theme } from '@mui/material/styles'
+import { useTheme, Theme, ThemeProvider } from '@mui/material/styles'
+import { BeautifulTheme } from '../../Theme/BeautifulTheme'
 
 const drawerWidth = 240
 
@@ -71,13 +72,15 @@ const NaviDrawer = () => {
         </Drawer>
         <main style={simpleStyles.content}>
           <Toolbar />
-          <Routes>
-            <Route path={'/'} element={<ContactForm />} />
-            <Route path={'/form'} element={<ContactForm />} />
-            <Route path={'/grid'} element={<ContactCardGrid />} />
-            <Route path={'/table'} element={<ContactTable />} />
-            <Route path={'/datagrid'} element={<ContactDataGrid />} />
-          </Routes>
+          <ThemeProvider theme={BeautifulTheme}>
+            <Routes>
+              <Route path={'/'} element={<ContactForm />} />
+              <Route path={'/form'} element={<ContactForm />} />
+              <Route path={'/grid'} element={<ContactCardGrid />} />
+              <Route path={'/table'} element={<ContactTable />} />
+              <Route path={'/datagrid'} element={<ContactDataGrid />} />
+            </Routes>
+          </ThemeProvider>
         </main>
       </div>
     </BrowserRouter>
