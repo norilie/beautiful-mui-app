@@ -26,7 +26,7 @@ const BeautifulSelect = (props: {
         renderValue={(select: string[]) => select.join(', ')}
         // label='SKILLS'
         multiple
-        sx={{ minWidth: minWidth, marginRight: 2 }}
+        sx={{ minWidth: minWidth, marginRight: 2, marginBottom: { xs: 2, md: 0 } }}
         MenuProps={{
           PaperProps: {
             sx: {

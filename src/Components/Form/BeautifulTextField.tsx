@@ -12,7 +12,8 @@ export const BeautifulTextField = (props: TextFieldProps) => {
       sx={{
         minWidth: minWidth,
         marginRight: 2,
-        zIndex: 'drawer',
+        marginBottom: { xs: 2, md: 0 },
+        // zIndex: 'drawer',
         // '& .MuiInputBase-root': { height: 80 },
         '& .MuiOutlinedInput-root.Mui-focused': {
           borderColor: 'primary.dark',
